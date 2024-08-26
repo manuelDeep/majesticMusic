@@ -15,7 +15,7 @@ public class OpenApiConfig {
                 .info(new Info()
                         .title("Majestic Music API")
                         .version("v1")
-                        .description("Documentazione della Majestic Music API"));
+                        .description("Documentation Majestic Music API"));
     }
 
     @Bean
