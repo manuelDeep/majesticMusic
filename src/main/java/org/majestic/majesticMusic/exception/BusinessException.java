@@ -1,5 +1,10 @@
 package org.majestic.majesticMusic.exception;
 
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
 public class BusinessException extends RuntimeException {
 
     private final int httpCode;       // HTTP status code (400, 404 etc.)
@@ -17,13 +22,5 @@ public class BusinessException extends RuntimeException {
         super(message, cause);
         this.httpCode = httpCode;
         this.httpStatus = httpStatus;
-    }
-
-    public int getHttpCode() {
-        return httpCode;
-    }
-
-    public String getHttpStatus() {
-        return httpStatus;
     }
 }

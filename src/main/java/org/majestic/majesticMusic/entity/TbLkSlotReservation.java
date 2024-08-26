@@ -1,10 +1,15 @@
 package org.majestic.majesticMusic.entity;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
+
 import java.util.Set;
 
 @Entity
 @Table(name="TB_LK_SLOT_RESERVATION")
+@Getter
+@Setter
 public class TbLkSlotReservation {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,37 +24,4 @@ public class TbLkSlotReservation {
 
     @OneToMany(mappedBy = "tbLkSlotReservation")
     private Set<TbReservation> reservations;
-    //Getters and Setters
-
-    public int getLkSlotReservationId() {
-        return lkSlotReservationId;
-    }
-
-    public void setLkSlotReservationId(int lkSlotReservationId) {
-        this.lkSlotReservationId = lkSlotReservationId;
-    }
-
-    public String getCode() {
-        return code;
-    }
-
-    public void setCode(String code) {
-        this.code = code;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public Set<TbReservation> getReservations() {
-        return reservations;
-    }
-
-    public void setReservations(Set<TbReservation> reservations) {
-        this.reservations = reservations;
-    }
 }

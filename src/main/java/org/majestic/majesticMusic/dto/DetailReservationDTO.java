@@ -1,15 +1,10 @@
 package org.majestic.majesticMusic.dto;
 
-import java.time.LocalDateTime;
+import lombok.Getter;
+import lombok.Setter;
 
+@Getter
+@Setter
 public class DetailReservationDTO extends BaseReservationDTO {
     private int reservationId;
-
-    public int getReservationId() {
-        return reservationId;
-    }
-
-    public void setReservationId(int reservationId) {
-        this.reservationId = reservationId;
-    }
 }
