@@ -81,21 +81,28 @@ public class ReservationServiceImpl implements ReservationService {
     @Override
     public List<DetailReservationDTO> getReservations(GetCustomerReservationsListRequest request) throws BusinessException {
         try {
+            // Used to create CriteriaQuery
             CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
+
+            // Defines the query
             CriteriaQuery<TbReservation> criteriaQuery = criteriaBuilder.createQuery(TbReservation.class);
 
+            // Defines the entity class from which the query will start
             Root<TbReservation> reservationRoot = criteriaQuery.from(TbReservation.class);
 
-            // Join with customer
+            // Join TbReservation with TbCustomer by field tbCustomer present in TbReservation
             Join<TbReservation, TbCustomer> customerJoin = reservationRoot.join("tbCustomer");
 
+            // Conditions list
             List<Predicate> predicates = new ArrayList<>();
             predicates.add(criteriaBuilder.equal(customerJoin.get("idCustomer"), request.getCustomerId()));
 
             //TODO check
             predicates = checkFilters(criteriaBuilder, reservationRoot, predicates, request.getFilters());
 
+            // Add conditions to query
             criteriaQuery.where(predicates.toArray(new Predicate[0]));
+            // Run query
             List<TbReservation> reservations = entityManager.createQuery(criteriaQuery).getResultList();
 
             return reservations.stream().map(this::createDetailReservationByRecord).toList();
