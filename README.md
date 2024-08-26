@@ -1,0 +1,4 @@
+Come sala prove "Majestic Music" voglio creare il mio nuovo portale per gestire la prenotazione delle sale da parte dei miei clienti. Il portale non richiede la registrazione dell'utente per poter effettuare una prenotazione. Sono previsti tre slot di prenotazione: mattina, pomeriggio, sera. Il responsabile della sala prove vede la coda delle prenotazioni e per ognuna può decidere se approvarla o rifiutarla. L'utente riceve il suo codice di prenotazione e può seguirne lo stato.
+ 
+Come team, procediamo allo sviluppo per iterazioni. Decidiamo che nella prima iterazione non sarà disponibile un'interfaccia grafica, ma verranno create delle API al fine di prenotare una sala e aggiornare lo stato della prenotazione. Decidiamo di utilizzare il framework Spring e Java (versione a tua scelta).
+Decidiamo di progettare anche i test di unità sul codice oggetto di sviluppo.
