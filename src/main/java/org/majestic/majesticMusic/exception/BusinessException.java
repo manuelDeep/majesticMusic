@@ -1,26 +1,12 @@
 package org.majestic.majesticMusic.exception;
 
-import lombok.Getter;
-import lombok.Setter;
-
-@Getter
-@Setter
 public class BusinessException extends RuntimeException {
 
-    private final int httpCode;       // HTTP status code (400, 404 etc.)
-    private final String httpStatus;  // HTTP status description (Bad Request, Not Found etc.)
-
-    // Constructor with HTTP code, status, and message
-    public BusinessException(int httpCode, String httpStatus, String message) {
+    public BusinessException(String message) {
         super(message);
-        this.httpCode = httpCode;
-        this.httpStatus = httpStatus;
     }
 
-    // Constructor with HTTP code, status, message, and cause
-    public BusinessException(int httpCode, String httpStatus, String message, Throwable cause) {
+    public BusinessException(String message, Throwable cause) {
         super(message, cause);
-        this.httpCode = httpCode;
-        this.httpStatus = httpStatus;
     }
 }

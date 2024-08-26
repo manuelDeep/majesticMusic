@@ -63,7 +63,7 @@ public class ReservationServiceImpl implements ReservationService {
         }
         catch (BusinessException ex) {
             System.err.println("Error during the insertion of the reservation: " + ex.getMessage());
-            throw ex;
+            throw new BusinessException("Error during the insertion of the reservation: " + ex.getMessage());
         }
     }
 
@@ -97,8 +97,8 @@ public class ReservationServiceImpl implements ReservationService {
             return reservations.stream().map(this::createDetailReservationByRecord).toList();
         }
         catch (BusinessException ex) {
-            System.err.println("Error during the insertion of the reservation: " + ex.getMessage());
-            throw ex;
+            System.err.println("Error during get reservations customer list: " + ex.getMessage());
+            throw new BusinessException("Error during get reservations customer list: " + ex.getMessage());
         }
     }
 
@@ -136,8 +136,8 @@ public class ReservationServiceImpl implements ReservationService {
             return reservations.stream().map(this::createDetailReservationByRecord).toList();
         }
         catch (BusinessException ex) {
-            System.err.println("Error during the insertion of the reservation: " + ex.getMessage());
-            throw ex;
+            System.err.println("Error during get reservations manager list: " + ex.getMessage());
+            throw new BusinessException("Error during get reservations manager list: " + ex.getMessage());
         }
     }
 
@@ -156,8 +156,8 @@ public class ReservationServiceImpl implements ReservationService {
             return createDetailReservationByRecord(tbReservation);
         }
         catch (BusinessException ex) {
-            System.err.println("Error during the insertion of the reservation: " + ex.getMessage());
-            throw ex;
+            System.err.println("Error during get reservation detail: " + ex.getMessage());
+            throw new BusinessException("Error during get reservation detail: " + ex.getMessage());
         }
     }
 
@@ -187,7 +187,7 @@ public class ReservationServiceImpl implements ReservationService {
             return response;
         }
         catch (BusinessException ex) {
-            System.err.println("Error during the insertion of the reservation: " + ex.getMessage());
+            System.err.println("Error during reservation status update: " + ex.getMessage());
             OutcomeDTO response = new OutcomeDTO();
             response.setOutcome(false);
             response.setDescription("Error during status update");
