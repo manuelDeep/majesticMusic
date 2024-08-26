@@ -1,5 +1,7 @@
 package org.majestic.majesticMusic.exception;
 
+import lombok.Getter;
+import lombok.Setter;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -20,6 +22,8 @@ public class GlobalExceptionHandler {
         return new ResponseEntity<>(errorResponse, HttpStatus.valueOf(ex.getHttpCode()));
     }
 
+    @Getter
+    @Setter
     public static class ErrorResponse {
         private int code;         // HTTP status code
         private String status;   // HTTP status description
@@ -28,31 +32,6 @@ public class GlobalExceptionHandler {
         public ErrorResponse(int code, String status, String message) {
             this.code = code;
             this.status = status;
-            this.message = message;
-        }
-
-        // Getter e setter
-        public int getCode() {
-            return code;
-        }
-
-        public void setCode(int code) {
-            this.code = code;
-        }
-
-        public String getStatus() {
-            return status;
-        }
-
-        public void setStatus(String status) {
-            this.status = status;
-        }
-
-        public String getMessage() {
-            return message;
-        }
-
-        public void setMessage(String message) {
             this.message = message;
         }
     }

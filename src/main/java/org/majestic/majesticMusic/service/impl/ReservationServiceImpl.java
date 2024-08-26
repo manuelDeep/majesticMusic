@@ -13,6 +13,8 @@ import org.majestic.majesticMusic.dto.request.HandleReservationRequest;
 import org.majestic.majesticMusic.dto.request.InsertReservationRequest;
 import org.majestic.majesticMusic.entity.*;
 import org.majestic.majesticMusic.exception.BusinessException;
+import org.majestic.majesticMusic.exception.HttpErrorCode;
+import org.majestic.majesticMusic.exception.HttpStatusCode;
 import org.majestic.majesticMusic.repository.CustomerRepository;
 import org.majestic.majesticMusic.repository.ReservationRepository;
 
@@ -24,6 +26,8 @@ import jakarta.persistence.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import static org.majestic.majesticMusic.exception.HttpErrorCode.*;
+import static org.majestic.majesticMusic.exception.HttpStatusCode.*;
 
 @Service
 public class ReservationServiceImpl implements ReservationService {
@@ -63,7 +67,7 @@ public class ReservationServiceImpl implements ReservationService {
         }
         catch (BusinessException ex) {
             System.err.println("Error during the insertion of the reservation: " + ex.getMessage());
-            throw new BusinessException("Error during the insertion of the reservation: " + ex.getMessage());
+            throw ex;
         }
     }
 
@@ -98,7 +102,7 @@ public class ReservationServiceImpl implements ReservationService {
         }
         catch (BusinessException ex) {
             System.err.println("Error during get reservations customer list: " + ex.getMessage());
-            throw new BusinessException("Error during get reservations customer list: " + ex.getMessage());
+            throw ex;
         }
     }
 
@@ -137,7 +141,7 @@ public class ReservationServiceImpl implements ReservationService {
         }
         catch (BusinessException ex) {
             System.err.println("Error during get reservations manager list: " + ex.getMessage());
-            throw new BusinessException("Error during get reservations manager list: " + ex.getMessage());
+            throw ex;
         }
     }
 
@@ -157,7 +161,7 @@ public class ReservationServiceImpl implements ReservationService {
         }
         catch (BusinessException ex) {
             System.err.println("Error during get reservation detail: " + ex.getMessage());
-            throw new BusinessException("Error during get reservation detail: " + ex.getMessage());
+            throw ex;
         }
     }
 
