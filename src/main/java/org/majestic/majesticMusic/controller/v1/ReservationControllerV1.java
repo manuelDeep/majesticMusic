@@ -102,18 +102,11 @@ class ReservationControllerV1 {
 
     /**
      * Return reservation detail
-     * @param reservationId Reservation ID
-     * @param isApproved Status set by the manager
-     * @return Outcome of update
+     * @param request contains reservation id and reservation status.
      * @throws BusinessException Business exception
      */
-    @GetMapping("/update-status")
-    public OutcomeDTO handleReservation(@RequestParam(required = true) int reservationId, @RequestParam(required = true) boolean isApproved) throws BusinessException {
-
-        HandleReservationRequest request = new HandleReservationRequest();
-        request.setReservationId(reservationId);
-        request.setApproved(isApproved);
-
+    @PostMapping("/update-status")
+    public OutcomeDTO handleReservation(@RequestBody HandleReservationRequest request) throws BusinessException {
         return reservationService.handleReservation(request);
     }
 }
